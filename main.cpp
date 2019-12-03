@@ -66,8 +66,9 @@ void Test(const char* pszJsonStr)
 }
 
 
-int main()
+void TestArray()
 {
+	
 	char szAppLabel[][17] = { 0 };
 	for (int i=0; i<7; ++i)
 	{
@@ -95,5 +96,19 @@ int main()
 	char szTest[13] = {0};
 	sprintf(szTest, "%012s", pszTest);
 	printf("szTest:%s\n", szTest);
+}
+
+
+int main()
+{
+    unsigned int uCount = 0;
+	char ucCount[8] = { 0 };
+
+	for (unsigned int i=0; i<0xFFFFFFFF; ++i)
+	{
+		memcpy(&ucCount[0], (void *)&i, sizeof(i));
+		printf("%02x %02x %02x %02x\n", ucCount[0], ucCount[1], ucCount[2], ucCount[3]);
+	}
+
 	return 0;
 }
